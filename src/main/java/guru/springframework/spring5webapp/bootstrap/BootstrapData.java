@@ -26,29 +26,40 @@ public class BootstrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Author ernest = new Author("Ernest", "Hemingway");
-        Book forWhomTheBellTolls = new Book("For Whom The Bell Tolls", "123123");
-        ernest.getBooks().add(forWhomTheBellTolls);
-        forWhomTheBellTolls.getAuthors().add(ernest);
-
-        authorRepository.save(ernest);
-        bookRepository.save(forWhomTheBellTolls);
-
-        Author rod = new Author("Rod", "Johnson");
-        Book noEJB = new Book("J2EE Development without EJB", "32423432423");
-        rod.getBooks().add(noEJB);
-        noEJB.getAuthors().add(rod);
-
-        authorRepository.save(rod);
-        bookRepository.save(noEJB);
-
         System.out.println("Started in Bootstrap");
-        System.out.println("Number of Books: " + bookRepository.count());
 
         Publisher dan = new Publisher("Daniel Varga", "Whatevs street 2", "Little Town Called" +
                 "None of Your Goddamn Business", "Flyover", 2342);
         publisherRepository.save(dan);
 
         System.out.println("Number of Publishers: " + publisherRepository.count());
+
+
+        Author ernest = new Author("Ernest", "Hemingway");
+        Book forWhomTheBellTolls = new Book("For Whom The Bell Tolls", "123123");
+
+        ernest.getBooks().add(forWhomTheBellTolls);
+        forWhomTheBellTolls.getAuthors().add(ernest);
+        forWhomTheBellTolls.setPublisher(dan);
+        dan.getBooks().add(forWhomTheBellTolls);
+
+        authorRepository.save(ernest);
+        bookRepository.save(forWhomTheBellTolls);
+        publisherRepository.save(dan);
+
+        Author rod = new Author("Rod", "Johnson");
+        Book noEJB = new Book("J2EE Development without EJB", "32423432423");
+
+        rod.getBooks().add(noEJB);
+        noEJB.getAuthors().add(rod);
+        noEJB.setPublisher(dan);
+        dan.getBooks().add(noEJB);
+
+        authorRepository.save(rod);
+        bookRepository.save(noEJB);
+        publisherRepository.save(dan);
+
+        System.out.println("Number of Books: " + bookRepository.count());
+        System.out.println("Publisher Number of books: " + dan.getBooks().size());
     }
 }
