@@ -69,7 +69,7 @@ public class Book {
         this.authors = authors;
     }
 
-    public Publisher getPublishers() {
+    public Publisher getPublisher() {
         return publisher;
     }
 
@@ -83,7 +83,6 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
                 ", publisher=" + publisher +
                 '}';
     }
