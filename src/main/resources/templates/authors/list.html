@@ -10,9 +10,11 @@
 
 <table>
     <tr>
+        <th>Id</th>
         <th>Name</th>
     </tr>
     <tr th:each="author : ${authors}">
+        <td th:text="${author.getId()}"></td>
         <td th:text="${author.lastName} + ' ' + ${author.firstName}">xyz</td>
     </tr>
 </table>
