@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head charset="UTF-8"/>
+    <title>Spring FrameWork Guru</title>
+</head>
+<body>
+
+<h1>Author List</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.lastName} + ' ' + ${author.firstName}">xyz</td>
+    </tr>
+</table>
+
+</body>
+</html>
